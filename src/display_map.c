@@ -28,14 +28,13 @@ char **display_map(int lignes)
 
     for (int i = 0; i != nb_ligne; i++) {
         map[i] = malloc((nb_col + 1) * sizeof(char));
-        for (int j = 0; j != nb_col; j++) {
+        for (int j = 0; j != nb_col; j++)
             if (i == 0 || i == nb_ligne - 1)
                 map[i][j] = '*';
             else if (j == 0 || j == nb_col - 1)
                 map[i][j] = '*';
             else
                 map[i][j] = ' ';
-        }
     }
     for (int k = 1; k != nb_ligne - 1; k++)
         map[k] = fill_map(k, nb_col, map[k]);
@@ -43,4 +42,5 @@ char **display_map(int lignes)
         my_putstr(map[i]);
         my_putchar('\n');
     }
+    return (map);
 }

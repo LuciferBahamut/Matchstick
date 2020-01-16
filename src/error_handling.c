@@ -10,6 +10,7 @@
 int error_handling(int ac, char **av)
 {
     int arg1;
+    int arg2;
 
     if (ac != 3)
         return (ERROR);
@@ -20,7 +21,10 @@ int error_handling(int ac, char **av)
             if (av[i][j] < '0' || av[i][j] > '9')
                 return (ERROR);
     arg1 = my_atoi(av[1]);
+    arg2 = my_atoi(av[2]);
     if (arg1 < 1 || arg1 > 100)
+        return (ERROR);
+    if (arg2 <= 0)
         return (ERROR);
     return (SUCCESS);
 }
