@@ -7,6 +7,13 @@
 
 #include "my.h"
 
+void multi_free(char **map)
+{
+    for (int i = 0; map[i] != NULL; i++)
+        free(map[i]);
+    free(map);
+}
+
 int main(int ac, char **av)
 {
     int lignes;
@@ -18,6 +25,6 @@ int main(int ac, char **av)
     lignes = my_atoi(av[1]);
     nb_dell_match = my_atoi(av[2]);
     map = display_map(lignes);
-    free(map);
+    multi_free(map);
     return (SUCCESS);
 }
