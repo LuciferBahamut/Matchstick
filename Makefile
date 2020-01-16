@@ -7,7 +7,12 @@
 
 NAME	=	matchstick
 
-SRC	=	src/main.c
+SRC	=	src/main.c \
+		src/my_putchar.c \
+		src/my_putstr.c \
+		src/error_handling.c \
+		src/my_atoi.c \
+		src/display_map.c
 
 CC	=	gcc
 
