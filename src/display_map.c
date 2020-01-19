@@ -20,25 +20,25 @@ char *fill_map(int i, int col, char *map)
     return (map);
 }
 
-char **display_map(int lignes)
+char **display_map(game_t *gm)
 {
-    int nb_ligne = lignes + 2;
-    int nb_col = 2 * lignes + 1;
-    char **map = malloc((nb_ligne) * sizeof(char *));
+    int nb_line = gm->max_line + 2;
+    int nb_col = 2 * gm->max_line + 1;
+    char **map = malloc((nb_line) * sizeof(char *));
 
-    for (int i = 0; i != nb_ligne; i++) {
+    for (int i = 0; i != nb_line; i++) {
         map[i] = malloc((nb_col + 1) * sizeof(char));
         for (int j = 0; j != nb_col; j++)
-            if (i == 0 || i == nb_ligne - 1)
+            if (i == 0 || i == nb_line - 1)
                 map[i][j] = '*';
             else if (j == 0 || j == nb_col - 1)
                 map[i][j] = '*';
             else
                 map[i][j] = ' ';
     }
-    for (int k = 1; k != nb_ligne - 1; k++)
+    for (int k = 1; k != nb_line - 1; k++)
         map[k] = fill_map(k, nb_col, map[k]);
-    for (int i = 0; i != nb_ligne; i++) {
+    for (int i = 0; i != nb_line; i++) {
         my_putstr(map[i]);
         my_putchar('\n');
     }

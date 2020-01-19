@@ -12,7 +12,13 @@ SRC	=	src/main.c \
 		src/my_putstr.c \
 		src/error_handling.c \
 		src/my_atoi.c \
-		src/display_map.c
+		src/display_map.c \
+		src/game.c \
+		src/check_value.c \
+		src/turn_p.c \
+		src/my_put_nbr.c \
+		src/my_strlen.c \
+		src/udp_map.c
 
 CC	=	gcc
 

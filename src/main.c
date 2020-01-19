@@ -16,15 +16,17 @@ void multi_free(char **map)
 
 int main(int ac, char **av)
 {
-    int lignes;
-    int nb_dell_match;
-    char **map;
+    game_t *gm = malloc(sizeof(int) * 4 + sizeof(char**)); 
+    int ret;
 
     if (error_handling(ac, av) == ERROR)
         return (ERROR);
-    lignes = my_atoi(av[1]);
-    nb_dell_match = my_atoi(av[2]);
-    map = display_map(lignes);
-    multi_free(map);
+    gm->max_line = my_atoi(av[1]);
+    gm->max_match = my_atoi(av[2]);
+    gm->map = display_map(gm);
+    ret = game(gm);
+    multi_free(gm->map);
+    free(gm);
+    return (ret);
     return (SUCCESS);
 }
