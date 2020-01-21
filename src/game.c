@@ -15,7 +15,7 @@ int game(game_t *gm)
         return (WINA);
     }
     else
-        my_putstr("\n\n");
+        my_putstr("\n");
 //    turn_ai(gm);
 //    if (check_pipe_e(gm) == 0) {
 //        my_putstr(DAI);
@@ -23,7 +23,7 @@ int game(game_t *gm)
 //    }
 //    else {
 //        my_putstr("\n\n");
-//        game(gm);
+        game(gm);
 //    }
     return (SUCCESS);
 }

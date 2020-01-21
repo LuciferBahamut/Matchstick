@@ -24,6 +24,7 @@ int main(int ac, char **av)
     gm->max_line = my_atoi(av[1]);
     gm->max_match = my_atoi(av[2]);
     gm->map = display_map(gm);
+    my_putchar('\n');
     ret = game(gm);
     multi_free(gm->map);
     free(gm);

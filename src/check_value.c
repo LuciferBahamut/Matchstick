@@ -15,9 +15,6 @@ int check_pipe_l(game_t *gm)
     for (int j = 1; str[gm->nb_line][j] != '*'; j++)
         if (str[gm->nb_line][j] == '|')
             nb++;
-//    for (int i = 1; i != gm->max_line + 2; i++)
-//        free(str[i]);
-//    free(str);
     return (nb);
 }
 
@@ -26,13 +23,10 @@ int check_pipe_e(game_t *gm)
     char **str = gm->map;
     int nb = 0;
 
-    for (int i = 1; i != gm->max_line; i++)
+    for (int i = 1; i != gm->max_line + 1; i++)
         for (int j = 1; str[i][j] != '*'; j++)
             if (str[i][j] == '|')
                 nb++;
-//    for (int i = 1; i != gm->max_line + 2; i++)
-//        free(str[i]);
-//    free(str);
     return (nb);
 }
 
@@ -69,10 +63,9 @@ int check_match(char *buffer, game_t *gm)
         my_putstr(EMINPUT1);
         return (ERROR);
     }
-    if (gm->dell_match > check_pipe_l) {
+    if (gm->dell_match > check_pipe_l(gm)) {
         my_putstr(ETINPUT);
         return (ERROR);
     }
     return (SUCCESS);
 }
-

@@ -49,5 +49,6 @@ int turn_p(game_t *gm)
     f_match(gm, size, buffer);
     print_msg(gm);
     gm->map = udp_map(gm, gm->map);
+    free(buffer);
     return (SUCCESS);
 }

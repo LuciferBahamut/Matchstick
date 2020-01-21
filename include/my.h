@@ -14,7 +14,7 @@
 #define WINA 2
 #define WINP 1
 
-#define LINE "LINE: "
+#define LINE "Line: "
 #define MATCH "Matches: "
 
 #define TAI "AI's turn...\n"
