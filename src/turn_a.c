@@ -23,7 +23,7 @@ int *fill_tab(game_t *gm)
     int max = gm->max_line + 1;
 
     gm->nb_line = 1;
-    for (int i = 0; gm->nb_line != gm->max_line; gm->nb_line++, i++)
+    for (int i = 0; gm->nb_line != max; gm->nb_line++, i++)
         stock[i] = check_pipe_l(gm);
     return (stock);
 }
@@ -54,7 +54,6 @@ int turn_a(game_t *gm)
     }
     else {
         gm->nb_line = gm->max_line;
-        gm->dell_match = random() % check_pipe_l(gm);
         check_error(gm, tab, gm->max_line);
     }
     print_msg(gm);
