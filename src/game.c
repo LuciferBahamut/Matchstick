@@ -9,6 +9,7 @@
 
 int game(game_t *gm)
 {
+    my_putstr(TPLAYER);
     turn_p(gm);
     if (check_pipe_e(gm) == 0) {
         my_putstr(DPLAYER);
@@ -16,14 +17,15 @@ int game(game_t *gm)
     }
     else
         my_putstr("\n");
-//    turn_ai(gm);
-//    if (check_pipe_e(gm) == 0) {
-//        my_putstr(DAI);
-//        return (WINP);
-//    }
-//    else {
-//        my_putstr("\n\n");
+    my_putstr(TAI);
+    turn_a(gm);
+    if (check_pipe_e(gm) == 0) {
+        my_putstr(DAI);
+        return (WINP);
+    }
+    else {
+        my_putstr("\n");
         game(gm);
-//    }
+    }
     return (SUCCESS);
 }

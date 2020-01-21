@@ -18,7 +18,8 @@ SRC	=	src/main.c \
 		src/turn_p.c \
 		src/my_put_nbr.c \
 		src/my_strlen.c \
-		src/udp_map.c
+		src/udp_map.c \
+		src/turn_a.c
 
 CC	=	gcc
 

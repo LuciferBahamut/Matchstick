@@ -7,17 +7,6 @@
 
 #include "my.h"
 
-void f_match(game_t *gm, size_t size, char *buffer)
-{
-    my_putstr(MATCH);
-    while (1) {
-        getline(&buffer, &size, stdin);
-        break;
-    }
-    if (check_match(buffer, gm) == ERROR)
-        f_match(gm, size, buffer);
-}
-
 void f_line(game_t *gm, size_t size, char *buffer)
 {
     my_putstr(LINE);
@@ -27,6 +16,17 @@ void f_line(game_t *gm, size_t size, char *buffer)
     }
     if (check_line(buffer, gm) == ERROR)
         f_line(gm, size, buffer);
+}
+
+void f_match(game_t *gm, size_t size, char *buffer)
+{
+    my_putstr(MATCH);
+    while (1) {
+        getline(&buffer, &size, stdin);
+        break;
+    }
+    if (check_match(buffer, gm) == ERROR)
+        turn_p(gm);
 }
 
 static void print_msg(game_t *gm)
@@ -44,7 +44,6 @@ int turn_p(game_t *gm)
     size_t size = gm->max_line;
     char *buffer = malloc(sizeof(char) * gm->max_line);
 
-    my_putstr(TPLAYER);
     f_line(gm, size, buffer);
     f_match(gm, size, buffer);
     print_msg(gm);

@@ -53,6 +53,7 @@ int game(game_t *gm);
 int check_line(char *buffer, game_t *gm);
 int check_match(char *buffer, game_t *gm);
 int turn_p(game_t *gm);
+int turn_a(game_t *gm);
 int my_put_nbr(int nb);
 int my_strlen(char const *str);
 char **udp_map(game_t *gm, char **map);
