@@ -28,8 +28,16 @@ int *fill_tab(game_t *gm)
     return (stock);
 }
 
-void compute_win(game_t *gm)
+int check_error(game_t *gm, int *tab, int i)
 {
+    if (tab[i - 1] == 0)
+        for (int j = 0; j != gm->max_line; j++)
+            if (tab[j] != 0) {
+                gm->nb_line = j + 1;
+                gm->dell_match = random() % check_pipe_l(gm);
+            }
+    if (gm->dell_match == 0)
+        gm->dell_match = 1;
 }
 
 int turn_a(game_t *gm)
@@ -44,12 +52,10 @@ int turn_a(game_t *gm)
                 break;
             }
     }
-    else if (check_pipe_e(gm) <= gm->max_match + 1) {
-        compute_win(gm);
-    }
     else {
         gm->nb_line = gm->max_line;
         gm->dell_match = random() % check_pipe_l(gm);
+        check_error(gm, tab, gm->max_line);
     }
     print_msg(gm);
     free(tab);
