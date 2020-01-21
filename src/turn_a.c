@@ -29,7 +29,7 @@ int *fill_tab(game_t *gm)
 
 void compute_win(game_t *gm)
 {
-    
+
 }
 
 int turn_a(game_t *gm)

@@ -16,7 +16,7 @@ void multi_free(char **map)
 
 int main(int ac, char **av)
 {
-    game_t *gm = malloc(sizeof(int) * 4 + sizeof(char**)); 
+    game_t *gm = malloc(sizeof(int) * 4 + sizeof(char**));
     int ret;
 
     if (error_handling(ac, av) == ERROR)
