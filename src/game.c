@@ -10,7 +10,8 @@
 int game(game_t *gm)
 {
     my_putstr(TPLAYER);
-    turn_p(gm);
+    if (turn_p(gm) == CEOF)
+        return (SUCCESS);
     if (check_pipe_e(gm) == 0) {
         my_putstr(DPLAYER);
         return (WINA);

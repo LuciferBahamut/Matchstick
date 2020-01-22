@@ -9,6 +9,7 @@
 #define MY_H_
 
 #define SUCCESS 0
+#define CEOF 9
 #define ERROR 84
 
 #define WINA 2

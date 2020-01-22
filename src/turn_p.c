@@ -7,26 +7,34 @@
 
 #include "my.h"
 
-void f_line(game_t *gm, size_t size, char *buffer)
+int f_line(game_t *gm, size_t size, char *buffer)
 {
     my_putstr(LINE);
     while (1) {
-        getline(&buffer, &size, stdin);
+        if (getline(&buffer, &size, stdin) == EOF) {
+            my_putchar('\n');
+            return (CEOF);
+        }
         break;
     }
     if (check_line(buffer, gm) == ERROR)
         f_line(gm, size, buffer);
+    return (SUCCESS);
 }
 
-void f_match(game_t *gm, size_t size, char *buffer)
+int f_match(game_t *gm, size_t size, char *buffer)
 {
     my_putstr(MATCH);
     while (1) {
-        getline(&buffer, &size, stdin);
+        if (getline(&buffer, &size, stdin) == EOF) {
+            my_putchar('\n');
+            return (CEOF);
+        }
         break;
     }
     if (check_match(buffer, gm) == ERROR)
         turn_p(gm);
+    return (SUCCESS);
 }
 
 static void print_msg(game_t *gm)
@@ -44,8 +52,10 @@ int turn_p(game_t *gm)
     size_t size = gm->max_line;
     char *buffer = malloc(sizeof(char) * gm->max_line);
 
-    f_line(gm, size, buffer);
-    f_match(gm, size, buffer);
+    if (f_line(gm, size, buffer) == CEOF)
+        return (CEOF);
+    if (f_match(gm, size, buffer) == CEOF)
+        return (CEOF);
     print_msg(gm);
     gm->map = udp_map(gm, gm->map);
     free(buffer);
