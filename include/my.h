@@ -60,5 +60,6 @@ int my_strlen(char const *str);
 char **udp_map(game_t *gm, char **map);
 int check_pipe_e(game_t *gm);
 int check_pipe_l(game_t *gm);
+static int check_gm(game_t *gm, size_t size, char *buffer);
 
 #endif

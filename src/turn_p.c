@@ -33,7 +33,7 @@ int f_match(game_t *gm, size_t size, char *buffer)
         break;
     }
     if (check_match(buffer, gm) == ERROR)
-        turn_p(gm);
+        check_gm(gm, size, buffer);
     return (SUCCESS);
 }
 
@@ -46,15 +46,22 @@ static void print_msg(game_t *gm)
     my_putchar('\n');
 }
 
+static int check_gm(game_t *gm, size_t size, char *buffer)
+{
+    if (f_line(gm, size, buffer) == CEOF)
+        return (CEOF);
+    if (f_match(gm, size, buffer) == CEOF)
+        return (CEOF);
+    return (SUCCESS);
+}
+
 int turn_p(game_t *gm)
 {
     int i = 0;
     size_t size = gm->max_line;
     char *buffer = malloc(sizeof(char) * gm->max_line);
 
-    if (f_line(gm, size, buffer) == CEOF)
-        return (CEOF);
-    if (f_match(gm, size, buffer) == CEOF)
+    if (check_gm(gm, size, buffer) == CEOF)
         return (CEOF);
     print_msg(gm);
     gm->map = udp_map(gm, gm->map);

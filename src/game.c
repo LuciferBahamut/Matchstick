@@ -17,7 +17,7 @@ int game(game_t *gm)
         return (WINA);
     }
     else
-        my_putstr("\n");
+        my_putchar('\n');
     my_putstr(TAI);
     turn_a(gm);
     if (check_pipe_e(gm) == 0) {
@@ -25,7 +25,7 @@ int game(game_t *gm)
         return (WINP);
     }
     else {
-        my_putstr("\n");
+        my_putchar('\n');
         game(gm);
     }
     return (SUCCESS);

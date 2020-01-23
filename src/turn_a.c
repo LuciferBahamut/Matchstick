@@ -31,11 +31,16 @@ int *fill_tab(game_t *gm)
 int check_error(game_t *gm, int *tab, int i)
 {
     if (tab[i - 1] == 0)
-        for (int j = 0; j != gm->max_line; j++)
+        for (int j = 0; j != gm->max_line; j++) {
             if (tab[j] != 0) {
                 gm->nb_line = j + 1;
                 gm->dell_match = random() % check_pipe_l(gm);
             }
+        }
+    else
+        gm->dell_match = random() % check_pipe_l(gm);
+    while (gm->dell_match > gm->max_match)
+        gm->dell_match = random() % check_pipe_l(gm);
     if (gm->dell_match == 0)
         gm->dell_match = 1;
 }
