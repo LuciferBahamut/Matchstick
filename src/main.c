@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-void multi_free(char **map)
+void multi_free(char **map, game_t *gm)
 {
-    for (int i = 0; map[i] != NULL; i++)
+    for (int i = 0; i != gm->max_line + 2; i++)
         free(map[i]);
     free(map);
 }
@@ -26,7 +26,7 @@ int main(int ac, char **av)
     gm->map = display_map(gm);
     my_putchar('\n');
     ret = game(gm);
-    multi_free(gm->map);
+    multi_free(gm->map, gm);
     free(gm);
     return (ret);
     return (SUCCESS);
