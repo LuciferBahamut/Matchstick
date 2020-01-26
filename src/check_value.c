@@ -42,7 +42,20 @@ int check_line(char *buffer, game_t *gm)
         my_putstr(ENINPUT);
         return (ERROR);
     }
-    return (SUCCESS);
+}
+
+int check_match2(game_t *gm)
+{
+    if (gm->dell_match > gm->max_match) {
+        my_putstr(EMINPUT0);
+        my_put_nbr(gm->max_match);
+        my_putstr(EMINPUT1);
+        return (ERROR);
+    }
+    if (gm->dell_match > check_pipe_l(gm)) {
+        my_putstr(ETINPUT);
+        return (ERROR);
+    }
 }
 
 int check_match(char *buffer, game_t *gm)
@@ -57,15 +70,6 @@ int check_match(char *buffer, game_t *gm)
         my_putstr(E0INPUT);
         return (ERROR);
     }
-    if (gm->dell_match > gm->max_match) {
-        my_putstr(EMINPUT0);
-        my_put_nbr(gm->max_match);
-        my_putstr(EMINPUT1);
+    if (check_match2(gm) == ERROR)
         return (ERROR);
-    }
-    if (gm->dell_match > check_pipe_l(gm)) {
-        my_putstr(ETINPUT);
-        return (ERROR);
-    }
-    return (SUCCESS);
 }

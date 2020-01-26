@@ -15,11 +15,12 @@ int f_line(game_t *gm, size_t size, char *buffer)
             my_putchar('\n');
             return (CEOF);
         }
+        else {
+            if (check_line(buffer, gm) == ERROR)
+                f_line(gm, size, buffer);
+        }
         break;
     }
-    if (check_line(buffer, gm) == ERROR)
-        f_line(gm, size, buffer);
-    return (SUCCESS);
 }
 
 int f_match(game_t *gm, size_t size, char *buffer)
@@ -30,11 +31,12 @@ int f_match(game_t *gm, size_t size, char *buffer)
             my_putchar('\n');
             return (CEOF);
         }
+        else {
+            if (check_match(buffer, gm) == ERROR)
+                check_gm(gm, size, buffer);
+        }
         break;
     }
-    if (check_match(buffer, gm) == ERROR)
-        check_gm(gm, size, buffer);
-    return (SUCCESS);
 }
 
 static void print_msg(game_t *gm)
@@ -52,7 +54,6 @@ static int check_gm(game_t *gm, size_t size, char *buffer)
         return (CEOF);
     if (f_match(gm, size, buffer) == CEOF)
         return (CEOF);
-    return (SUCCESS);
 }
 
 int turn_p(game_t *gm)
@@ -66,5 +67,4 @@ int turn_p(game_t *gm)
     print_msg(gm);
     gm->map = udp_map(gm, gm->map);
     free(buffer);
-    return (SUCCESS);
 }
