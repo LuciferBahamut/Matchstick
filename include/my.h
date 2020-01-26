@@ -24,12 +24,12 @@
 #define DAI "I lost... snif... but I'll get you next time!!\n"
 #define DPLAYER "You lost, too bad...\n"
 
-#define EINPUT "Error: invalid input (positive number expected)\n"
-#define ENINPUT "Error: this line is out of range\n"
-#define E0INPUT "Error: you have to remove at least one match\n"
-#define EMINPUT0 "Error: you cannot remove more than "
+#define EINPUT "\nError: invalid input (positive number expected)\n"
+#define ENINPUT "\nError: this line is out of range\n"
+#define E0INPUT "\nError: you have to remove at least one match\n"
+#define EMINPUT0 "\nError: you cannot remove more than "
 #define EMINPUT1 " matches per turn\n"
-#define ETINPUT "Error: not enough matches on this line\n"
+#define ETINPUT "\nError: not enough matches on this line\n"
 
 #include <stdlib.h>
 #include <stdio.h>
