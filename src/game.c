@@ -28,5 +28,4 @@ int game(game_t *gm)
         my_putchar('\n');
         game(gm);
     }
-    return (SUCCESS);
 }
