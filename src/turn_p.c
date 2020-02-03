@@ -37,6 +37,7 @@ int f_match(game_t *gm, size_t size, char *buffer)
         }
         break;
     }
+    return (SUCCESS);
 }
 
 static void print_msg(game_t *gm)
