@@ -1,4 +1,4 @@
-# Matchstcik
+# Matchstick
 {EPITECH} -- First year -- thrid CPE project
 
 1st semester CPE unit part II : Grade C
