@@ -3,7 +3,7 @@
 
 <p>1st semester CPE unit part II : Grade C</p>
 
-<p>matchstick_2019 -- Without Crash</p>
+<p>matchstick -- Without Crash</p>
 
 <p>Result : 69,4 %</p>
   <li>Initial display of 4x4 borad : 100 % -- 3 / 3</li>
